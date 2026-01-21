@@ -13,7 +13,7 @@ public enum Category: String, CaseIterable, Codable, Sendable {
     case groceries, rent, dining, transport, subscriptions, income, other
 }
 
-public struct Transaction: Identifiable, Equatable, Sendable {
+public struct FinanceTransaction: Identifiable, Equatable, Sendable {
     public let id: UUID
     public let date: Date
     public let money: Money
@@ -42,7 +42,7 @@ public struct TransactionsFilter: Equatable, Sendable {
 }
 
 public protocol TransactionsRepository: Sendable {
-    func observeTransactions(filter: TransactionsFilter) -> AsyncThrowingStream<[Transaction], Error>
+    func observeTransactions(filter: TransactionsFilter) -> AsyncThrowingStream<[FinanceTransaction], Error>
     func refreshTransactions() async throws
 }
 
